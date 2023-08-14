@@ -1,12 +1,13 @@
 import Banner from "componentes/Banner";
 import { Outlet } from "react-router-dom";
 
-export default function PaginaPadrao() {
-    return(
+export default function PaginaPadrao({ children }) {
+    return (
         <main>
-            <Banner/>
+            <Banner />
 
-            <Outlet/>
+            <Outlet />
+            {children}
         </main>
-    )
+    );
 }

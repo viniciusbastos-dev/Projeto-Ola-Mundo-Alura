@@ -1,8 +1,11 @@
+import "./Post.css";
+
 import { useParams } from "react-router-dom";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import posts from "json/posts.json";
 import PostModelo from "componentes/PostModelo";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import "./Post.css";
+import NaoEncontrada from "paginas/NaoEncontrada";
+import PaginaPadrao from "componentes/PaginaPadrao";
 
 export default function Post() {
     const parametros = useParams();
@@ -10,17 +13,19 @@ export default function Post() {
     const post = posts.find((post) => post.id === Number(parametros.id));
 
     if (!post) {
-        return <h1>Post não encontrado...</h1>;
+        return <NaoEncontrada />;
     }
 
     return (
-        <PostModelo
-            fotoCapa={`/assets/posts/${post.id}/capa.png`}
-            titulo={post.titulo}
-        >
-            <div className="post-markdown-container">
-                <ReactMarkdown>{post.texto}</ReactMarkdown>
-            </div>
-        </PostModelo>
+        <PaginaPadrao>
+            <PostModelo
+                fotoCapa={`/assets/posts/${post.id}/capa.png`}
+                titulo={post.titulo}
+            >
+                <div className="post-markdown-container">
+                    <ReactMarkdown>{post.texto}</ReactMarkdown>
+                </div>
+            </PostModelo>
+        </PaginaPadrao>
     );
 }
