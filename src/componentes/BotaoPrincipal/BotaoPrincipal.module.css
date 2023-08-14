@@ -15,6 +15,12 @@
     border: 3px solid var(--azul-escuro);
 }
 
+.botaoPrincipal.lg {
+    padding: 1.5rem 3.68rem;
+    font-size: 1.5rem;
+    line-height: 1.125rem;
+}
+
 @media (max-width: 1100px) {
     .botaoPrincipal {
         padding: 0.6875rem 1.5rem;
